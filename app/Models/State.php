@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class State extends Model
 {
     use HasFactory;
+<<<<<<< HEAD
     // Désactiver les timestamps
     public $timestamps = false;
 
@@ -19,4 +20,8 @@ class State extends Model
     {
         return $this->hasMany(Nursery::class, 'id_state');
     }
+=======
+
+    protected $fillable = ['name'];
+>>>>>>> cf26b2d41ec563cf66e2c9508e178034558bee9c
 }
