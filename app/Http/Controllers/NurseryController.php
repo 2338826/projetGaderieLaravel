@@ -13,4 +13,51 @@ class NurseryController extends Controller
 
         return view('nursery');
     }
+
+    public function add(Request $request)
+    {
+        $nursery = new Nursery();
+        $nursery->name = $request->name;
+        $nursery->address = $request->address;
+        $nursery->phone = $request->phone;
+        $nursery->email = $request->email;
+        $nursery->save();
+
+        return redirect()->route('nursery.show');
+    }
+
+    public function edit($id)
+    {
+        $nursery = Nursery::findOrFail($id);
+
+        return view('edit', ['nursery' => $nursery]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $nursery = Nursery::findOrFail($id);
+        $nursery->name = $request->name;
+        $nursery->address = $request->address;
+        $nursery->phone = $request->phone;
+        $nursery->email = $request->email;
+        $nursery->save();
+
+        return redirect()->route('nursery.show');
+    }
+    
+    public function destroy($id)
+    {
+        $nursery = Nursery::findOrFail($id);
+        $nursery->delete();
+
+        return redirect()->route('nursery.show');
+    }
+
+    public function clear()
+    {
+        Nursery::truncate();
+
+        return redirect()->route('nursery.show');
+    }
+
 }
