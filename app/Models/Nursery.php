@@ -21,12 +21,5 @@ class Nursery extends Model
         return $this->belongsTo(State::class, 'id_state');
     }
 
-    //     protected $fillable = ['name', 'address', 'phone', 'email'];
-
-    //     public function state ()
-//     {
-//         return $this->belongsTo(State::class);
-// >>>>>>> cf26b2d41ec563cf66e2c9508e178034558bee9c
-//     }
 }
 
