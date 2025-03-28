@@ -82,27 +82,14 @@
         </div>
         <div class="row mb-3">
             <div class="col-md-6">
-                <label for="province" class="form-label">Province :</label>
-                <select name="province" id="province" class="form-select custom-input" required>
+                <label for="state" class="form-label">Province :</label>
+                <select name="id_state" id="id_state" class="form-select custom-input" required>
                     <option value="">Sélectionner une province ou un territoire</option>
-                    <option value="Alberta" {{ old('province') == 'Alberta' ? 'selected' : '' }}>Alberta</option>
-                    <option value="Colombie-Britannique" {{ old('province') == 'Colombie-Britannique' ? 'selected' : '' }}>
-                        Colombie-Britannique</option>
-                    <option value="Manitoba" {{ old('province') == 'Manitoba' ? 'selected' : '' }}>Manitoba</option>
-                    <option value="Nouveau-Brunswick" {{ old('province') == 'Nouveau-Brunswick' ? 'selected' : '' }}>
-                        Nouveau-Brunswick</option>
-                    <option value="Terre-Neuve-et-Labrador" {{ old('province') == 'Terre-Neuve-et-Labrador' ? 'selected' : '' }}>Terre-Neuve-et-Labrador</option>
-                    <option value="Nouvelle-Écosse" {{ old('province') == 'Nouvelle-Écosse' ? 'selected' : '' }}>
-                        Nouvelle-Écosse</option>
-                    <option value="Ontario" {{ old('province') == 'Ontario' ? 'selected' : '' }}>Ontario</option>
-                    <option value="Île-du-Prince-Édouard" {{ old('province') == 'Île-du-Prince-Édouard' ? 'selected' : '' }}>
-                        Île-du-Prince-Édouard</option>
-                    <option value="Québec" {{ old('province') == 'Québec' ? 'selected' : '' }}>Québec</option>
-                    <option value="Saskatchewan" {{ old('province') == 'Saskatchewan' ? 'selected' : '' }}>Saskatchewan
-                    </option>
-                    <option value="Territoires du Nord-Ouest" {{ old('province') == 'Territoires du Nord-Ouest' ? 'selected' : '' }}>Territoires du Nord-Ouest</option>
-                    <option value="Nunavut" {{ old('province') == 'Nunavut' ? 'selected' : '' }}>Nunavut</option>
-                    <option value="Yukon" {{ old('province') == 'Yukon' ? 'selected' : '' }}>Yukon</option>
+                    @foreach($states as $state)
+                        <option value="{{ $state->id }}" {{ old('province') == $state->id ? 'selected' : '' }}>
+                            {{ $state->description }}
+                        </option>
+                    @endforeach
                 </select>
                 @error('province')
                     <div class="text-danger">{{ $message }}</div>
