@@ -24,7 +24,7 @@
                     <td>{{ $nursery->province }}</td>
                     <td>{{ $nursery->phone }}</td>
                     <td>
-                        <a href="{{ route('nursery.edit', $nursery->id) }}" class="btn btn-warning btn-sm me-1">Modifier</a>
+                        <a href="{{ route('nursery.edit', ['id' => $nursery->id]) }}" class="btn btn-warning btn-sm me-1">Modifier</a>
                         <form action="{{ route('nursery.destroy', $nursery->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

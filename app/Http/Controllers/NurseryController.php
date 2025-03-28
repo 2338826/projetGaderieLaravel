@@ -28,8 +28,9 @@ class NurseryController extends Controller
         $nursery = new Nursery();
         $nursery->name = $request->name;
         $nursery->address = $request->address;
+        $nursery->city = $request->city;
         $nursery->phone = $request->phone;
-        $nursery->email = $request->email;
+        $nursery->id_state = $request->id_state;
         $nursery->save();
 
         return redirect()->route('nursery.show');
@@ -38,8 +39,8 @@ class NurseryController extends Controller
     public function edit($id)
     {
         $nursery = Nursery::findOrFail($id);
-
-        return view('edit', ['nursery' => $nursery]);
+        $state = State::all();
+        return redirect()->route('nursery.edit', ['id' => $nursery -> id]);
     }
 
     public function update(Request $request, $id)
@@ -47,8 +48,9 @@ class NurseryController extends Controller
         $nursery = Nursery::findOrFail($id);
         $nursery->name = $request->name;
         $nursery->address = $request->address;
+        $nursery->city = $request->city;
+        $nursery->id_state = $request->id_state;
         $nursery->phone = $request->phone;
-        $nursery->email = $request->email;
         $nursery->save();
 
         return redirect()->route('nursery.show');
