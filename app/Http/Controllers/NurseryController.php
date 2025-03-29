@@ -39,8 +39,9 @@ class NurseryController extends Controller
     public function edit($id)
     {
         $nursery = Nursery::findOrFail($id);
-        $state = State::all();
-        return redirect()->route('nursery.edit', ['id' => $nursery -> id]);
+        $states = State::all();
+
+        return view('nurseryModify', compact('states', 'nursery'));
     }
 
     public function update(Request $request, $id)
