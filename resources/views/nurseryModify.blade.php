@@ -71,7 +71,7 @@
             </div>
 
             <div class="row mb-3">
-                <div class="col-md-6">
+                <div class="col-md-6" >
                     <label for="id_state" class="form-label">Province :</label>
                     <select name="id_state" id="id_state" class="form-select" required>
                         <option value="">Sélectionner une province ou un territoire</option>
