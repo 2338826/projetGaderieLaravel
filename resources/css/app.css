@@ -1,0 +1,70 @@
+
+
+    .nav-tabs .nav-link {
+        color: #000;
+        border: 1px solid #dee2e6;
+        border-bottom: none;
+        border-radius: 0;
+    }
+
+    .nav-tabs .nav-link.active {
+        background-color: #6aa8e8;
+        color: white;
+        border-color: #6aa8e8;
+    }
+
+    .nav-tabs {
+        border-bottom: 1px solid #6aa8e8;
+    }
+
+    .btn-danger {
+        background-color: #ff0000;
+        border-color: #ff0000;
+    }
+
+    .btn-warning {
+        background-color: #ffcc00;
+        border-color: #ffcc00;
+        color: #000;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        /* Vert similaire à la capture d'écran */
+        border-color: #28a745;
+    }
+
+    .custom-input {
+        border: 2px solid #000;
+        /* Bordure plus épaisse */
+        border-radius: 5px;
+        padding: 8px;
+    }
+
+    .form-label {
+        font-weight: bold;
+    }
+    .btn-create {
+        background-color: #28a745;
+        color: white;
+    }
+    .btn-create:hover {
+        background-color: #218838;
+        color: white;
+    }
+    .btn-warning {
+        background-color: #ffc107;
+        color: black;
+    }
+    .btn-warning:hover {
+        background-color: #e0a800;
+        color: black;
+    }
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+    .btn-danger:hover {
+        background-color: #c82333;
+        color: white;
+    }

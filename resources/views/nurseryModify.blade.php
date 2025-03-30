@@ -7,7 +7,7 @@
     <div class="container mt-5">
         <h1 class="mb-4">Modifier une Garderie</h1>
 
-        <!-- Tableau affichant les données actuelles -->
+       <!-- Table showing current data -->
         <div class="table-responsive mb-4">
             <table class="table table-bordered">
                 <thead class="table-light">
@@ -35,7 +35,7 @@
             </table>
         </div>
 
-        <!-- Formulaire de modification -->
+       <!-- Modification form -->
         <form action="{{ route('nursery.update', $nursery->id) }}" method="POST">
             @csrf
             @method('PUT')
@@ -106,31 +106,3 @@
     </div>
 @endsection
 
-@section('styles')
-    <style>
-        .btn-create {
-            background-color: #28a745;
-            color: white;
-        }
-        .btn-create:hover {
-            background-color: #218838;
-            color: white;
-        }
-        .btn-warning {
-            background-color: #ffc107;
-            color: black;
-        }
-        .btn-warning:hover {
-            background-color: #e0a800;
-            color: black;
-        }
-        .btn-danger {
-            background-color: #dc3545;
-            color: white;
-        }
-        .btn-danger:hover {
-            background-color: #c82333;
-            color: white;
-        }
-    </style>
-@endsection

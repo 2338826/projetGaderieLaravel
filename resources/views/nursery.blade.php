@@ -3,7 +3,7 @@
 @section('title', 'Garderies')
 
 @section('content')
-    <!-- Tableaux des crèches -->
+
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -12,7 +12,15 @@
                 <th>Ville</th>
                 <th>Province</th>
                 <th>Téléphone</th>
-                <th></th> <!-- Colonne pour les actions -->
+                <th>
+                    <!-- "Empty List" Button -->
+                    <form action="{{ route('nursery.clear') }}" method="POST" class="mb-3">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Vider la liste</button>
+                    </form>
+                </th>
+                <!-- Column for actions -->
             </tr>
         </thead>
         <tbody>
@@ -21,10 +29,12 @@
                     <td>{{ $nursery->name }}</td>
                     <td>{{ $nursery->address }}</td>
                     <td>{{ $nursery->city }}</td>
-                    <td>{{ $nursery->province }}</td>
+                    <td>{{ $nursery->state->description }}</td>
                     <td>{{ $nursery->phone }}</td>
+
                     <td>
-                        <a href="{{ route('nursery.edit', ['id' => $nursery->id]) }}" class="btn btn-warning btn-sm me-1">Modifier</a>
+                        <a href="{{ route('nursery.edit', ['id' => $nursery->id]) }}"
+                            class="btn btn-warning btn-sm me-1">Modifier</a>
                         <form action="{{ route('nursery.destroy', $nursery->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
@@ -40,14 +50,9 @@
         </tbody>
     </table>
 
-    <!-- Bouton "Vider la liste" -->
-    <form action="{{ route('nursery.clear') }}" method="POST" class="mb-3">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">Vider la liste</button>
-    </form>
 
-    <!-- Formulaire pour ajouter une crèche -->
+
+    <!-- Form to add a daycare -->
     <form action="{{ route('nursery.add') }}" method="POST" class="mt-4">
         @csrf
         <div class="row mb-3">
