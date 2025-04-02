@@ -25,9 +25,4 @@ Route::post('/Expenses/add', [ExpenseController::class, 'add'])->name('expense.a
 Route::put('/Expenses/{id}/update', [ExpenseController::class, 'update'])->name('expense.update');
 Route::delete('/Expenses/{id}/delete', [ExpenseController::class, 'destroy'])->name('expense.destroy');
 Route::delete('/Expenses/{id}/clear', [ExpenseController::class, 'clear'])->name('expense.clear');
-<<<<<<< HEAD
 Route::get('/Expenses', [ExpenseController::class, 'index'])->name('expense.show');
-// route::get('/contact', [PostController::class, 'contact']);  
-=======
-Route::get('/Expenses', [ExpenseController::class, 'index'])->name('expense.show');
->>>>>>> 010a90bd231e6c175aa73304400c5c0a296b80c1
