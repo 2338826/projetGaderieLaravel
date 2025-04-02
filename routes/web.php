@@ -26,3 +26,4 @@ Route::put('/Expenses/{id}/update', [ExpenseController::class, 'update'])->name(
 Route::delete('/Expenses/{id}/delete', [ExpenseController::class, 'destroy'])->name('expense.destroy');
 Route::delete('/Expenses/{id}/clear', [ExpenseController::class, 'clear'])->name('expense.clear');
 Route::get('/Expenses', [ExpenseController::class, 'index'])->name('expense.show');
+

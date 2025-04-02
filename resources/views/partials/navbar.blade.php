@@ -5,8 +5,8 @@
                 href="{{ url('/') }}">Garderies</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ request()->is('depenses') ? 'active' : '' }}"
-                href="{{ url('/depenses') }}">Dépenses</a>
+            <a class="nav-link {{ Route::currentRouteName() == 'expense.show' ? 'active' : '' }}"
+                href="{{ route('expense.show') }}">Dépenses</a>
         </li>
         <li class="nav-item">
             <a class="nav-link {{ request()->is('commerces') ? 'active' : '' }}"

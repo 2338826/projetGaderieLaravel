@@ -17,6 +17,6 @@ class Commerce extends Model
     // function to define the primary key for the model
     public function expenses()
     {
-        return $this->hasMany(State::class, 'commerce_id');
+        return $this->hasMany(Expense::class, 'commerce_id');
     }
 }

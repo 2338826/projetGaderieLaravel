@@ -16,6 +16,6 @@ class ExpenseCategory extends Model
     // function to define the primary key for the model
     public function expenses()
     {
-        return $this->hasMany(State::class, 'category_expense_id');
+        return $this->hasMany(Expense::class, 'category_expense_id');
     }
 }
