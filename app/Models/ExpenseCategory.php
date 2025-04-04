@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class ExpenseCategory extends Model
 {
     use HasFactory;
+
+    // Define timestamps for this model
     public $timestamps = false;
 
     // Define the table associated with the model

@@ -10,8 +10,21 @@ use App\Models\Commerce;
 
 use Illuminate\Http\Request;
 
+/*
+ * Class ExpenseController
+ * @package App\Http\Controllers
+ *
+ * This controller handles the management of expenses, including displaying,
+ * adding, editing, updating, and deleting expenses.
+ */
 class ExpenseController extends Controller
 {
+    /**
+     * Display a listing of the expenses.
+     *
+     * @param Request $request
+     * @return \Illuminate\View\View
+     */
     public function index(Request $request)
     {
         $nurseryId = $request->query('nursery_id');
@@ -40,6 +53,12 @@ class ExpenseController extends Controller
 
         return view('expense', compact('expenses', 'categories', 'commerces', 'nurseries', 'selectedNursery'));
     }
+
+    /**
+     * Show the form for creating a new expense.
+     *
+     * @return \Illuminate\View\View
+     */
     public function add(Request $request)
     {
         $request->validate([
@@ -61,6 +80,12 @@ class ExpenseController extends Controller
 
     }
 
+    /**
+     * Show the form for editing the specified expense.
+     *
+     * @param int $id
+     * @return \Illuminate\View\View
+     */
     public function edit($id)
     {
         $expense = Expense::findOrFail($id);
@@ -71,6 +96,13 @@ class ExpenseController extends Controller
         return view('expenseModify', compact('expense', 'categories', 'commerces', 'nurseries'));
     }
 
+    /**
+     * Update the specified expense in storage.
+     *
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -86,6 +118,13 @@ class ExpenseController extends Controller
 
         return redirect()->route('expense.show')->with('success', 'Expense updated successfully.');
     }
+
+    /**
+     * Remove the specified expense from storage.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
         $expense = Expense::findOrFail($id);
@@ -93,6 +132,12 @@ class ExpenseController extends Controller
 
         return redirect()->route('expense.show')->with('success', 'Expense deleted successfully.');
     }
+
+    /**
+     * Clear all expenses from the database.
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function clear()
     {
         Expense::truncate();
