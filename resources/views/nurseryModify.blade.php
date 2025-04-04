@@ -17,7 +17,7 @@
                         <th>Ville</th>
                         <th>Province</th>
                         <th>Téléphone</th>
-                        <th>Actions</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -27,9 +27,7 @@
                         <td>{{ $nursery->city }}</td>
                         <td>{{ $nursery->state->description ?? 'N/A' }}</td>
                         <td>{{ $nursery->phone }}</td>
-                        <td>
-                            <a href="{{ route('nursery.show') }}" class="btn btn-danger btn-sm">Vider la liste</a>
-                        </td>
+                        
                     </tr>
                 </tbody>
             </table>
@@ -43,7 +41,7 @@
             <div class="row mb-3">
                 <div class="col-md-6">
                     <label for="name" class="form-label">Nom :</label>
-                    <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $nursery->name) }}" required>
+                    <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $nursery->name) }}" readonly>
                     @error('name')
                         <div class="text-danger mt-1">{{ $message }}</div>
                     @enderror

@@ -90,9 +90,8 @@ class NurseryController extends Controller
     */
     public function clear()
     {
-        Nursery::truncate();
+        Nursery::query()->delete();
 
         return redirect()->route('nursery.show');
     }
-
 }

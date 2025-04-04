@@ -28,7 +28,15 @@
                 <th>Montant admissible</th>
                 <th>Catégorie de dépense</th>
                 <th>Commerce</th>
-                <th>Actions</th>
+                <th>
+                @if ($selectedNursery)
+        <form action="{{ route('expense.clear', 0) }}" method="POST" class="mb-2">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Vider la liste</button>
+        </form>
+    @endif
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -36,16 +44,16 @@
                 <tr>
                     <td>{{ $expense->dateTime }}</td>
                     <td>{{ number_format($expense->amount, 2) }}$</td>
-                    <td>{{ number_format($expense->amount * ($expense->categoryExpense?->pourcentage ?? 0), 2) }}$</td>
-                    <td>{{ $expense->categoryExpense?->description ?? 'Non défini' }}</td>
+                    <td>{{ number_format($expense->amount * ($expense->expenseCategory?->pourcentage ?? 0), 2) }}$</td>
+                    <td>{{ $expense->expenseCategory?->description ?? 'Non défini' }}</td>
                     <td>{{ $expense->commerce?->description ?? 'Non défini' }}</td>
                     <td>
+                        <a href="{{ route('expense.edit', $expense->id) }}" class="btn btn-warning btn-sm">Modifier</a>
                         <form action="{{ route('expense.destroy', $expense->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                         </form>
-                        <a href="{{ route('expense.edit', $expense->id) }}" class="btn btn-warning btn-sm">Modifier</a>
                     </td>
                 </tr>
             @empty
@@ -57,13 +65,7 @@
     </table>
 
     <!-- Bouton pour vider la liste -->
-    @if ($selectedNursery)
-        <form action="{{ route('expense.clear', 0) }}" method="POST" class="mb-4">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="btn btn-danger">Vider la liste</button>
-        </form>
-    @endif
+ 
 
     <!-- Formulaire pour ajouter une dépense -->
     <h3>Ajouter une dépense</h3>
@@ -83,15 +85,24 @@
                     @endforeach
                 </select>
             </div>
-
             <div class="mb-3">
-                <label for="commerce_id" class="form-label">Commerce :</label>
-                <select name="commerce_id" id="commerce_id" class="form-select w-25" required>
-                    @foreach ($commerces as $commerce)
-                        <option value="{{ $commerce->id }}">{{ $commerce->description }}</option>
-                    @endforeach
-                </select>
+    <label class="form-label">Commerce :</label>
+    <div class="d-flex flex-column">
+        @foreach ($commerces as $commerce)
+            <div class="form-check">
+                <input type="radio" 
+                       name="commerce_id" 
+                       id="commerce_{{ $commerce->id }}" 
+                       value="{{ $commerce->id }}" 
+                       class="form-check-input"
+                       @if ($loop->first) required @endif>
+                <label for="commerce_{{ $commerce->id }}" class="form-check-label">
+                    {{ $commerce->description }}
+                </label>
             </div>
+        @endforeach
+    </div>
+</div>
 
             <input type="hidden" name="nursery_id" value="{{ $selectedNursery->id }}">
 
