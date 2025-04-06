@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Commerce extends Model
 {
     use HasFactory;
+    
     // Disable timestamps for this model
     public $timestamps = false;
 
