@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
+    /*
+  Function to show the expense list
+  */
     public function index(Request $request)
     {
         $nurseryId = $request->query('nursery_id');
@@ -40,27 +43,33 @@ class ExpenseController extends Controller
 
         return view('expense', compact('expenses', 'categories', 'commerces', 'nurseries', 'selectedNursery'));
     }
+    /*
+   Function to Add the expense
+   */
     public function add(Request $request)
     {
         $request->validate([
-                    'amount' => 'required|numeric',
-                    'category_expense_id' => 'required|exists:expense_categories,id',
-                    'commerce_id' => 'required|exists:commerces,id',
-                    'nursery_id' => 'required|exists:nurseries,id',
-                ]);
-        
-                Expense::create([
-                    'dateTime' => now(),
-                    'amount' => $request->amount,
-                    'category_expense_id' => $request->category_expense_id,
-                    'commerce_id' => $request->commerce_id,
-                    'nursery_id' => $request->nursery_id,
-                ]);
-        
-                return redirect()->route('expense.show', ['nursery_id' => $request->nursery_id]);
+            'amount' => 'required|numeric',
+            'category_expense_id' => 'required|exists:expense_categories,id',
+            'commerce_id' => 'required|exists:commerces,id',
+            'nursery_id' => 'required|exists:nurseries,id',
+        ]);
+
+        Expense::create([
+            'dateTime' => now(),
+            'amount' => $request->amount,
+            'category_expense_id' => $request->category_expense_id,
+            'commerce_id' => $request->commerce_id,
+            'nursery_id' => $request->nursery_id,
+        ]);
+
+        return redirect()->route('expense.show', ['nursery_id' => $request->nursery_id]);
 
     }
 
+    /*
+    Function to show the expense form
+    */
     public function edit($id)
     {
         $expense = Expense::findOrFail($id);
@@ -70,7 +79,9 @@ class ExpenseController extends Controller
 
         return view('expenseModify', compact('expense', 'categories', 'commerces', 'nurseries'));
     }
-
+    /*
+       Function to update the expense
+       */
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -84,15 +95,21 @@ class ExpenseController extends Controller
         $expense = Expense::findOrFail($id);
         $expense->update($request->all());
 
-        return redirect()->route('expense.show')->with('success', 'Expense updated successfully.');
+        return redirect()->route('expense.show', ['nursery_id' => $expense->nursery_id])->with('success', 'Expense updated successfully.');
     }
+    /*
+   Function to delete the expense
+   */
     public function destroy($id)
     {
         $expense = Expense::findOrFail($id);
         $expense->delete();
 
-        return redirect()->route('expense.show')->with('success', 'Expense deleted successfully.');
+        return redirect()->route('expense.show', ['nursery_id' => $expense->nursery_id])->with('success', 'Expense deleted successfully.');
     }
+    /*
+   Function to clear the expense list
+   */
     public function clear()
     {
         Expense::truncate();

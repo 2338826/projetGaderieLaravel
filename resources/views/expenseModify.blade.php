@@ -2,13 +2,12 @@
 
 @section('content')
     <h3>Modifier une dépense</h3>
-
-    <!-- Formulaire pour modifier une dépense -->
+<!-- Form to modify an expense -->
     <form action="{{ route('expense.update', $expense->id) }}" method="POST">
         @csrf
         @method('PUT')
 
-        <!-- Champ Date et Heure -->
+        
         <div class="mb-3">
             <label for="dateTime" class="form-label">Date et Heure :</label>
             <input type="datetime-local" 
@@ -19,7 +18,7 @@
                    readonly>
         </div>
 
-        <!-- Champ Montant -->
+
         <div class="mb-3">
             <label for="amount" class="form-label">Montant :</label>
             <input type="number" 
@@ -31,7 +30,7 @@
                    required>
         </div>
 
-        <!-- Champ Catégorie de dépense -->
+
         <div class="mb-3">
             <label for="category_expense_id" class="form-label">Catégorie de dépense :</label>
             <select name="category_expense_id" id="category_expense_id" class="form-select w-25" required>
@@ -44,7 +43,7 @@
             </select>
         </div>
 
-        <!-- Champ Commerce (boutons radio) -->
+ 
         <div class="mb-3">
             <label class="form-label">Commerce :</label>
             <div class="d-flex flex-column">
@@ -66,10 +65,10 @@
             </div>
         </div>
 
-        <!-- Champ caché pour nursery_id -->
+        <!-- Hidden field for nursery_id -->
         <input type="hidden" name="nursery_id" value="{{ $expense->nursery_id }}">
 
-        <!-- Boutons -->
+  
         <button type="submit" class="btn btn-success">Modifier</button>
         <a href="{{ route('expense.show', ['nursery_id' => $expense->nursery_id]) }}" class="btn btn-secondary">Annuler</a>
     </form>

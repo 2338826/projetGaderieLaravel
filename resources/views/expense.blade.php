@@ -1,7 +1,7 @@
 @extends('layout.app')
 
 @section('content')
-    <!-- Liste déroulante des garderies -->
+   <!-- Drop-down list of daycares -->
     <div class="mb-4">
         @if ($nurseries->isNotEmpty())
             <form action="{{ route('expense.show') }}" method="GET">
@@ -9,7 +9,7 @@
                 <select name="nursery_id" id="nursery_id" class="form-select w-25" onchange="this.form.submit()">
                     @foreach ($nurseries as $nursery)
                         <option value="{{ $nursery->id }}" {{ $selectedNursery && $selectedNursery->id == $nursery->id ? 'selected' : '' }}>
-                            {{ $nursery->name }} <!-- Utiliser 'name' au lieu de 'description' -->
+                            {{ $nursery->name }} 
                         </option>
                     @endforeach
                 </select>
@@ -19,7 +19,7 @@
         @endif
     </div>
 
-    <!-- Tableau des dépenses -->
+    <!-- Expenses Table -->
     <table class="table table-bordered table-striped">
         <thead class="table-light">
             <tr>
@@ -64,10 +64,7 @@
         </tbody>
     </table>
 
-    <!-- Bouton pour vider la liste -->
- 
-
-    <!-- Formulaire pour ajouter une dépense -->
+  <!-- Form to add an expense -->
     <h3>Ajouter une dépense</h3>
     @if ($selectedNursery)
         <form action="{{ route('expense.add') }}" method="POST">
