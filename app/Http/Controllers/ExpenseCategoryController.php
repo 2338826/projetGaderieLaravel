@@ -13,33 +13,40 @@ class ExpenseCategoryController extends Controller
     public function index()
     {
         $expenseCategories = ExpenseCategory::all();
-        return view('ExpenseCategory.index', compact('expenseCategories'));
+        return view('expenseCategory', compact('expenseCategories'));
     }
 
     public function add(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'pourcentage' => 'required|numeric|min:0|max:100',
         ]);
 
-        ExpenseCategory::create($request->all());
+        $expenseCategory = new ExpenseCategory();
+        $expenseCategory->description = $request->description;
+        $expenseCategory->pourcentage = $request->pourcentage;
+        $expenseCategory->save();
+
         return redirect()->route('expenseCategory.show')->with('success', 'Expense Category added successfully.');
     }
 
     public function edit($id)
     {
         $expenseCategory = ExpenseCategory::findOrFail($id);
-        return view('ExpenseCategory.edit', compact('expenseCategory'));
+        return view('expenseCategoryModify', compact('expenseCategory'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'pourcentage' => 'required|numeric|min:0|max:100',
         ]);
 
         $expenseCategory = ExpenseCategory::findOrFail($id);
         $expenseCategory->update($request->all());
+
         return redirect()->route('expenseCategory.show')->with('success', 'Expense Category updated successfully.');
     }
 

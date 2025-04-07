@@ -14,7 +14,8 @@ class CommerceController extends Controller
     public function index()
     {
         $commerces = Commerce::all();
-        return view('Commerce.index', compact('commerces'));
+
+        return view('commerce', compact('commerces'));
     }
 
     public function add(Request $request)
@@ -23,25 +24,31 @@ class CommerceController extends Controller
         $commerce->description = $request->description;
         $commerce->address = $request->address;
         $commerce->phone = $request->phone;
+        $commerce->save();
 
-        Commerce::create($request->all());
+        
         return redirect()->route('commerce.show')->with('success', 'Commerce added successfully.');
+
+
     }
 
     public function edit($id)
     {
         $commerce = Commerce::findOrFail($id);
-        return view('Commerce.edit', compact('commerce'));
+        return view('commerceModify', compact('commerce'));
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'phone' => 'required|string|max:15',
         ]);
 
         $commerce = Commerce::findOrFail($id);
         $commerce->update($request->all());
+
         return redirect()->route('commerce.show')->with('success', 'Commerce updated successfully.');
     }
 
