@@ -20,10 +20,25 @@ Route::put('/garderie/{id}/update', [NurseryController::class, 'update'])->name(
 Route::delete('/garderie/{id}/delete', [NurseryController::class, 'destroy'])->name('nursery.destroy');
 Route::delete('/garderie/clear', [NurseryController::class, 'clear'])->name('nursery.clear');
 Route::get('/Garderies', [NurseryController::class, 'index'])->name('nursery.show');
+
 Route::get('/Expenses/{id}/edit', [ExpenseController::class, 'edit'])->name('expense.edit');
 Route::post('/Expenses/add', [ExpenseController::class, 'add'])->name('expense.add');
 Route::put('/Expenses/{id}/update', [ExpenseController::class, 'update'])->name('expense.update');
 Route::delete('/Expenses/{id}/delete', [ExpenseController::class, 'destroy'])->name('expense.destroy');
 Route::delete('/Expenses/{id}/clear', [ExpenseController::class, 'clear'])->name('expense.clear');
 Route::get('/Expenses', [ExpenseController::class, 'index'])->name('expense.show');
+
+Route::get('/Commerce/{id}/edit', [CommerceController::class, 'edit'])->name('commerce.edit');
+Route::post('/Commerce/add', [CommerceController::class, 'add'])->name('commerce.add');
+Route::put('/Commerce/{id}/update', [CommerceController::class, 'update'])->name('commerce.update');
+Route::delete('/Commerce/{id}/delete', [CommerceController::class, 'destroy'])->name('commerce.destroy');
+Route::delete('/Commerce/{id}/clear', [CommerceController::class, 'clear'])->name('commerce.clear');
+Route::get('/Commerce',[CommerceController::class, 'index'])->name('commerce.show');
+
+Route::get('/ExpenseCategory/{id}/edit', [ExpenseCategoryController::class, 'edit'])->name('expenseCategory.edit');
+Route::post('/ExpenseCategory/add', [ExpenseCategoryController::class, 'add'])->name('expenseCategory.add');
+Route::put('/ExpenseCategory/{id}/update', [ExpenseCategoryController::class, 'update'])->name('expenseCategory.update');
+Route::delete('/ExpenseCategory/{id}/delete', [ExpenseCategoryController::class, 'destroy'])->name('expenseCategory.destroy');
+Route::delete('/ExpenseCategory/{id}/clear', [ExpenseCategoryController::class, 'clear'])->name('expenseCategory.clear');
+Route::get('/ExpenseCategory', [ExpenseCategoryController::class, 'index'])->name('expenseCategory.show');
 
