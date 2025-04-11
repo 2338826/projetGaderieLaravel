@@ -35,6 +35,7 @@ class CommerceController extends Controller
     public function edit($id)
     {
         $commerce = Commerce::findOrFail($id);
+        $nursery = Nursery::with('nursery', 'expense')->get();
         return view('commerceModify', compact('commerce'));
     }
 
