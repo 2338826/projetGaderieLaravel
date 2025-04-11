@@ -9,12 +9,12 @@
                 href="{{ route('expense.show') }}">Dépenses</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ request()->is('commerces') ? 'active' : '' }}"
-                href="{{ url('/commerces') }}">Commerces</a>
+            <a class="nav-link {{ Route::currentRouteName() == 'commerce.show' ? 'active' : '' }}"
+                href="{{ route('commerce.show') }}">Commerces</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ request()->is('categorie-depense') ? 'active' : '' }}"
-                href="{{ url('/categorie-depense') }}">Catégorie de dépense</a>
+            <a class="nav-link {{ Route::currentRouteName() == 'expenseCategory.show' ? 'active' : '' }}"
+                href="{{ route('expenseCategory.show') }}">Catégorie de dépense</a>
         </li>
         <li class="nav-item">
             <a class="nav-link {{ request()->is('enfants') ? 'active' : '' }}" href="{{ url('/enfants') }}">Enfants</a>
