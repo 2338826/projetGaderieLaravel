@@ -1,6 +1,8 @@
 <?php
 use App\Http\Controllers\NurseryController;
 use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\CommerceController;
+use App\Http\Controllers\ExpenseCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +35,7 @@ Route::post('/Commerce/add', [CommerceController::class, 'add'])->name('commerce
 Route::put('/Commerce/{id}/update', [CommerceController::class, 'update'])->name('commerce.update');
 Route::delete('/Commerce/{id}/delete', [CommerceController::class, 'destroy'])->name('commerce.destroy');
 Route::delete('/Commerce/{id}/clear', [CommerceController::class, 'clear'])->name('commerce.clear');
-Route::get('/Commerce',[CommerceController::class, 'index'])->name('commerce.show');
+Route::get('/Commerce', [CommerceController::class, 'index'])->name('commerce.show');
 
 Route::get('/ExpenseCategory/{id}/edit', [ExpenseCategoryController::class, 'edit'])->name('expenseCategory.edit');
 Route::post('/ExpenseCategory/add', [ExpenseCategoryController::class, 'add'])->name('expenseCategory.add');

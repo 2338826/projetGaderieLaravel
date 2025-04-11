@@ -14,8 +14,10 @@ class CommerceController extends Controller
     public function index()
     {
         $commerces = Commerce::all();
+        $nursery = Nursery::all();
+        $expense = Expense::all();
 
-        return view('commerce', compact('commerces'));
+        return view('commerce', compact('commerces', 'nursery', 'expense'));
     }
 
     public function add(Request $request)
@@ -26,16 +28,18 @@ class CommerceController extends Controller
         $commerce->phone = $request->phone;
         $commerce->save();
 
-        
         return redirect()->route('commerce.show')->with('success', 'Commerce added successfully.');
-
-
     }
 
     public function edit($id)
     {
+        // Eager-load the expenses with their nursery and expenseCategory relationships
         $commerce = Commerce::findOrFail($id);
-        return view('commerceModify', compact('commerce'));
+        $nursery = Nursery::whereHas('expenses', function ($query) use ($id) {
+            $query->where('commerce_id', $id);
+        })->with(['expenses.commerce', 'expenses.expenseCategory'])->get();
+
+        return view('commerceModify', compact('commerce', 'nursery'));
     }
 
     public function update(Request $request, $id)
@@ -49,7 +53,8 @@ class CommerceController extends Controller
         $commerce = Commerce::findOrFail($id);
         $commerce->update($request->all());
 
-        return redirect()->route('commerce.show')->with('success', 'Commerce updated successfully.');
+        return redirect()->route('commerce.show', ['commerce_id' => $commerce->id])
+            ->with('success', 'Commerce updated successfully.');
     }
 
     public function destroy($id)

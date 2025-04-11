@@ -25,6 +25,10 @@ class Nursery extends Model
     {
         return $this->belongsTo(State::class, 'id_state');
     }
+    public function expenses()
+    {
+        return $this->hasMany(Expense::class, 'nursery_id');
+    }
 
 }
 

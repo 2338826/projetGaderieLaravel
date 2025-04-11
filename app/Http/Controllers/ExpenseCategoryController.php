@@ -33,7 +33,8 @@ class ExpenseCategoryController extends Controller
 
     public function edit($id)
     {
-        $expenseCategory = ExpenseCategory::findOrFail($id);
+        $expenseCategory = ExpenseCategory::with(['expenses.nursery', 'expenses.commerce'])->findOrFail($id);
+
         return view('expenseCategoryModify', compact('expenseCategory'));
     }
 

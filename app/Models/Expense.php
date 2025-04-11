@@ -25,5 +25,10 @@ class Expense extends Model
     {
         return $this->belongsTo(ExpenseCategory::class, 'category_expense_id');
     }
+    public function nursery()
+    {
+        return $this->belongsTo(Nursery::class, 'nursery_id');
+    }
+
 
 }
