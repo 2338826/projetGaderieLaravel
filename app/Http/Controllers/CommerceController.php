@@ -13,6 +13,8 @@ class CommerceController extends Controller
 {
     /**
      * Function to display the list of commerce.
+     * 
+     * @return \Illuminate\View\View
      */
     public function index()
     {
@@ -25,6 +27,9 @@ class CommerceController extends Controller
 
     /**
      * Function to display the form for adding a new commerce.
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function add(Request $request)
     {
