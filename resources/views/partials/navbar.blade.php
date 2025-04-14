@@ -17,11 +17,12 @@
                 href="{{ route('expenseCategory.show') }}">Catégorie de dépense</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ request()->is('enfants') ? 'active' : '' }}" href="{{ url('/enfants') }}">Enfants</a>
+            <a class="nav-link {{ Route::currentRouteName() == 'child.show' ? 'active' : '' }}"
+                href="{{route('child.show') }}">Enfants</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ request()->is('educateurs') ? 'active' : '' }}"
-                href="{{ url('/educateurs') }}">Éducateurs</a>
+            <a class="nav-link {{ Route::currentRouteName() == 'educator.show' ? 'active' : '' }}"
+                href="{{route('educator.show') }}">Educateurs</a>
         </li>
         <li class="nav-item">
             <a class="nav-link {{ request()->is('presences') ? 'active' : '' }}"

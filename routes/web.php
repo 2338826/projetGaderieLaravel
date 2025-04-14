@@ -3,6 +3,8 @@ use App\Http\Controllers\NurseryController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\CommerceController;
 use App\Http\Controllers\ExpenseCategoryController;
+use App\Http\Controllers\ChildController;
+use App\Http\Controllers\EducatorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,12 +46,12 @@ Route::delete('/ExpenseCategory/{id}/delete', [ExpenseCategoryController::class,
 Route::delete('/ExpenseCategory/{id}/clear', [ExpenseCategoryController::class, 'clear'])->name('expenseCategory.clear');
 Route::get('/ExpenseCategory', [ExpenseCategoryController::class, 'index'])->name('expenseCategory.show');
 
-Route::get('/Educateurs/{id}/edit', [EducateursController::class, 'edit'])->name('educateurs.edit');
-Route::post('/Educateurs/add', [EducateursController::class, 'add'])->name('educateurs.add');
-Route::put('/Educateurs/{id}/update', [EducateursController::class, 'update'])->name('educateurs.update');
-Route::delete('/Educateurs/{id}/delete', [EducateursController::class, 'destroy'])->name('educateurs.destroy');
-Route::delete('/Educateurs/{id}/clear', [EducateursController::class, 'clear'])->name('educateurs.clear');
-Route::get('/Educateurs', [EducateursController::class, 'index'])->name('educateurs.show');
+Route::get('/Educator/{id}/edit', [EducatorController::class, 'edit'])->name('educator.edit');
+Route::post('/Educator/add', [EducatorController::class, 'add'])->name('educator.add');
+Route::put('/Educator/{id}/update', [EducatorController::class, 'update'])->name('educator.update');
+Route::delete('/Educator/{id}/delete', [EducatorController::class, 'destroy'])->name('educator.destroy');
+Route::delete('/Educator/{id}/clear', [EducatorController::class, 'clear'])->name('educator.clear');
+Route::get('/Educator', [EducatorController::class, 'index'])->name('educator.show');
 
 Route::get('/Child/{id}/edit', [ChildController::class, 'edit'])->name('child.edit');
 Route::post('/Child/add', [ChildController::class, 'add'])->name('child.add');
