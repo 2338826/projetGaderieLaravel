@@ -44,3 +44,17 @@ Route::delete('/ExpenseCategory/{id}/delete', [ExpenseCategoryController::class,
 Route::delete('/ExpenseCategory/{id}/clear', [ExpenseCategoryController::class, 'clear'])->name('expenseCategory.clear');
 Route::get('/ExpenseCategory', [ExpenseCategoryController::class, 'index'])->name('expenseCategory.show');
 
+Route::get('/Educateurs/{id}/edit', [EducateursController::class, 'edit'])->name('educateurs.edit');
+Route::post('/Educateurs/add', [EducateursController::class, 'add'])->name('educateurs.add');
+Route::put('/Educateurs/{id}/update', [EducateursController::class, 'update'])->name('educateurs.update');
+Route::delete('/Educateurs/{id}/delete', [EducateursController::class, 'destroy'])->name('educateurs.destroy');
+Route::delete('/Educateurs/{id}/clear', [EducateursController::class, 'clear'])->name('educateurs.clear');
+Route::get('/Educateurs', [EducateursController::class, 'index'])->name('educateurs.show');
+
+Route::get('/Child/{id}/edit', [ChildController::class, 'edit'])->name('child.edit');
+Route::post('/Child/add', [ChildController::class, 'add'])->name('child.add');
+Route::put('/Child/{id}/update', [ChildController::class, 'update'])->name('child.update');
+Route::delete('/Child/{id}/delete', [ChildController::class, 'destroy'])->name('child.destroy');
+Route::delete('/Child/{id}/clear', [ChildController::class, 'clear'])->name('child.clear');
+Route::get('/Child', [ChildController::class, 'index'])->name('child.show');
+
