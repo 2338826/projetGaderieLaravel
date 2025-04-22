@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('name', 100);
             $table->string('firstName', 100);
-            $table->dateTime('birth_date');
+            $table->date('birth_date');
             $table->string('address', 200);
             $table->string('city', 100);
             $table->foreignId('id_state')->constrained('states')->onDelete('cascade');
