@@ -59,10 +59,10 @@ class ChildController extends Controller
     }
     public function edit($id)
     {
-        $Child = Child::with('state')->findOrFail($id);
+        $child = Child::with('state')->findOrFail($id);
         $states = State::all();
 
-        return view('childModify', compact('Child', 'states'));
+        return view('childModify', compact('child', 'states'));
     }
     public function update(Request $request, $id)
     {
