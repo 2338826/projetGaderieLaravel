@@ -53,7 +53,7 @@ class EducatorController extends Controller
         $educator->city = $request->city;
         $educator->id_state = $request->id_state;
         $educator->phone = $request->phone;
-       
+
         $educator->save();
 
         return redirect()->route('educator.show')->with('success', 'Educator added successfully.');
