@@ -32,6 +32,9 @@ class ChildController extends Controller
 
     }
 
+    /*
+    Function to add a new child
+    */
     public function add(Request $request)
     {
         $request->validate([
@@ -57,6 +60,10 @@ class ChildController extends Controller
 
         return redirect()->route('child.show')->with('success', 'Child added successfully.');
     }
+
+    /*
+    Function to edit the child 
+    */
     public function edit($id)
     {
         $child = Child::with('state')->findOrFail($id);
@@ -82,12 +89,20 @@ class ChildController extends Controller
 
         return redirect()->route('child.show')->with('success', 'Child updated successfully.');
     }
+
+    /*
+    Function to delete the child
+    */
     public function destroy($id)
     {
         $Child = Child::findOrFail($id);
         $Child->delete();
         return redirect()->route('child.show')->with('success', 'Child deleted successfully.');
     }
+
+    /*
+    Function to delete all the child
+    */
     public function clear()
     {
         Child::truncate();
