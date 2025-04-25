@@ -52,7 +52,7 @@ class ChildController extends Controller
         $Child->city = $request->city;
         $Child->id_state = $request->id_state;
         $Child->phone = $request->phone;
-       
+
         $Child->save();
 
         return redirect()->route('child.show')->with('success', 'Child added successfully.');
