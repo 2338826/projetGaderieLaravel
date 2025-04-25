@@ -33,6 +33,9 @@ class EducatorController extends Controller
 
     }
 
+    /*
+    Function to add a new educator
+    */
     public function add(Request $request)
     {
         $request->validate([
@@ -58,6 +61,10 @@ class EducatorController extends Controller
 
         return redirect()->route('educator.show')->with('success', 'Educator added successfully.');
     }
+
+    /*
+    Function to edit the educator
+    */
     public function edit($id)
     {
         $educator = Educator::with('state')->findOrFail($id);
@@ -65,6 +72,10 @@ class EducatorController extends Controller
 
         return view('educatorModify', compact('educator', 'states'));
     }
+
+    /*
+    Function to update the educator
+    */
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -83,12 +94,20 @@ class EducatorController extends Controller
 
         return redirect()->route('educator.show')->with('success', 'Educator updated successfully.');
     }
+
+    /*
+    Function to delete the educator
+    */
     public function destroy($id)
     {
         $educator = Educator::findOrFail($id);
         $educator->delete();
         return redirect()->route('educator.show')->with('success', 'Educator deleted successfully.');
     }
+
+    /*
+    Function to delete all educators
+    */
     public function clear()
     {
         Educator::truncate();
