@@ -25,8 +25,8 @@
                 href="{{route('educator.show') }}">Educateurs</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link {{ request()->is('presences') ? 'active' : '' }}"
-                href="{{ url('/presences') }}">Présences</a>
+            <a class="nav-link {{ Route::currentRouteName() == 'presence.show' ? 'active' : ''}}"
+                href="{{ route('presence.show') }}">Présences</a>
         </li>
         <li class="nav-item">
             <a class="nav-link {{ request()->is('rapport') ? 'active' : '' }}" href="{{ url('/rapport') }}">Rapport</a>

@@ -29,6 +29,10 @@ class Nursery extends Model
     {
         return $this->hasMany(Expense::class, 'nursery_id');
     }
+    public function presence()
+    {
+        return $this->hasMany(Presence::class, 'presence_id');
+    }
 
 }
 
