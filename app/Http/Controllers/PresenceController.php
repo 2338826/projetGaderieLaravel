@@ -38,8 +38,8 @@ class PresenceController extends Controller
             : collect();
         $educators = Educator::all();
         $children = Child::all();
-        return view('presence', compact('presences', 'nurseries', 'educators', 'children', 'selectedNursery')); 
-        
+        return view('presence', compact('presences', 'nurseries', 'educators', 'children', 'selectedNursery'));
+
     }
 
     /**
@@ -61,7 +61,7 @@ class PresenceController extends Controller
         return redirect()->route('presence.show')->with('success', 'Presence added successfully.');
     }
 
-   
+
 
     /**
      * Remove the specified presence from storage.
