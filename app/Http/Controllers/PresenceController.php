@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Presence;
+use App\Models\Nursery;
+use App\Models\Educator;
+use App\Models\Child;
 
 class PresenceController extends Controller
 {
@@ -57,43 +61,7 @@ class PresenceController extends Controller
         return redirect()->route('presence.show')->with('success', 'Presence added successfully.');
     }
 
-    /**
-     * Show the form for editing the specified presence.
-     *
-     * @param int $id
-     * @return \Illuminate\View\View
-     */
-    public function edit($id)
-    {
-        $presence = Presence::findOrFail($id);
-        $nurseries = Nursery::all();
-        $educators = Educator::all();
-        $children = Child::all();
-
-        return view('presenceModify', compact('presence', 'nurseries', 'educators', 'children'));
-    }
-
-    /**
-     * Update the specified presence in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'date' => 'required|date',
-            'nursery_id' => 'required|exists:nurseries,id',
-            'child_id' => 'required|exists:children,id',
-            'educator_id' => 'required|exists:educators,id',
-        ]);
-
-        $presence = Presence::findOrFail($id);
-        $presence->update($request->all());
-
-        return redirect()->route('presence.show')->with('success', 'Presence updated successfully.');
-    }
+   
 
     /**
      * Remove the specified presence from storage.
