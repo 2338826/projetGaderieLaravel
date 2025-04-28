@@ -16,7 +16,7 @@ class PresenceController extends Controller
      * @param Request $request
      * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(Request $request)
     {
         $nurseryId = $request->query('nursery_id');
         $nurseries = Nursery::all();
