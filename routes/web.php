@@ -5,6 +5,7 @@ use App\Http\Controllers\CommerceController;
 use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\ChildController;
 use App\Http\Controllers\EducatorController;
+use App\Http\Controllers\PresenceController;
 use Illuminate\Support\Facades\Route;
 
 /*
