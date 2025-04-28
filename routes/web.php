@@ -60,9 +60,8 @@ Route::delete('/Child/{id}/delete', [ChildController::class, 'destroy'])->name('
 Route::delete('/Child/{id}/clear', [ChildController::class, 'clear'])->name('child.clear');
 Route::get('/Child', [ChildController::class, 'index'])->name('child.show');
 
-Route::get('/Presence/{id}/edit', [PresenceController::class, 'edit'])->name('presence.edit');
+
 Route::post('/Presence/add', [PresenceController::class, 'add'])->name('presence.add');
-Route::put('/Presence/{id}/update', [PresenceController::class, 'update'])->name('presence.update');
 Route::delete('/Presence/{id}/delete', [PresenceController::class, 'destroy'])->name('presence.destroy');
 Route::delete('/Presence/{id}/clear', [PresenceController::class, 'clear'])->name('presence.clear');
 Route::get('/Presence', [PresenceController::class, 'index'])->name('presence.show');
