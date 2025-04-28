@@ -61,6 +61,10 @@
                     <td colspan="6" class="text-center">Aucune dépense trouvée pour cette garderie.</td>
                 </tr>
                 @endforelse
+                @empty
+                <tr>
+                    <td colspan="6" class="text-center">Aucune dépense trouvée pour cette garderie.</td>
+                </tr>
             @endforelse
         </tbody>
     </table>

@@ -56,7 +56,12 @@ class PresenceController extends Controller
             'educator_id' => 'required|exists:educators,id',
         ]);
 
-        Presence::create($request->all());
+        Presence::create([
+            'date' => now(),
+            'nursery_id' => $request->nursery_id,
+            'child_id' => $request->child_id,
+            'educator_id' => $request->educator_id,
+        ]);
 
         return redirect()->route('presence.show',['nursery_id' => $request->nursery_id]);
     }
