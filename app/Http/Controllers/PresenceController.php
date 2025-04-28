@@ -58,7 +58,7 @@ class PresenceController extends Controller
 
         Presence::create($request->all());
 
-        return redirect()->route('presence.show')->with('success', 'Presence added successfully.');
+        return redirect()->route('presence.show',['nursery_id' => $request->nursery_id]);
     }
 
    
