@@ -90,6 +90,7 @@
                 </select>
             </div>
         </div>
+        <input type="hidden" name="nursery_id" value="{{ $selectedNursery->id }}">
         <button type="submit" class="btn btn-success">Créer</button>
     </form>
 @endsection

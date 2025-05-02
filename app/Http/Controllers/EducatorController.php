@@ -6,6 +6,7 @@ use App\Models\Child;
 use App\Models\educator;
 use App\Models\Nursery;
 use App\Models\State;
+use APP\Models\Presence;
 
 
 
@@ -60,10 +61,11 @@ class EducatorController extends Controller
     }
     public function edit($id)
     {
-        $educator = Educator::with('state')->findOrFail($id);
+        $educator = Educator::with(['state', 'presences.nursery', 'presences.child', 'presences.educator'])->findOrFail($id);
+        $presences = $educator->presences;
         $states = State::all();
 
-        return view('educatorModify', compact('educator', 'states'));
+        return view('educatorModify', compact('educator', 'presences', 'states'));
     }
     public function update(Request $request, $id)
     {

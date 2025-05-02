@@ -16,5 +16,9 @@ class Child extends Model
     {
         return $this->belongsTo(State::class, 'id_state');
     }
+    public function presences()
+    {
+        return $this->hasMany(Presence::class, 'child_id');
+    }
 }
 

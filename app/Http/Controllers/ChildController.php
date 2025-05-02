@@ -59,10 +59,11 @@ class ChildController extends Controller
     }
     public function edit($id)
     {
-        $child = Child::with('state')->findOrFail($id);
+        $child = Child::with(['state', 'presences.nursery', 'presences.child', 'presences.educator'])->findOrFail($id);
+        $presences = $child->presences;
         $states = State::all();
 
-        return view('childModify', compact('child', 'states'));
+        return view('childModify', compact('child', 'presences', 'states'));
     }
     public function update(Request $request, $id)
     {

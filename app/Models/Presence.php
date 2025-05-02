@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Presence extends Model
 {
     use HasFactory;
-
+    public $timestamps = false;
     protected $fillable = [
         'date',
         'nursery_id',

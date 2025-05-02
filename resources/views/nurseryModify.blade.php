@@ -101,6 +101,34 @@
                 </div>
             </div>
         </form>
+        <h3 class="mt-4">Liste des dépenses</h3>
+    <table class="table table-bordered table-striped">
+        <thead class="table-light">
+            <tr>
+               
+                <th>DateTemps</th>
+                <th>Montant</th>
+                <th>Montant admissible</th>
+                <th>Catégorie de dépense</th>
+                <th>Commerce</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($nursery->expenses as $expense)
+                <tr>
+                    <td>{{ $expense->dateTime }}</td>
+                    <td>{{ number_format($expense->amount, 2) }}$</td>
+                    <td>{{ number_format($expense->amount * ($expense->expenseCategory?->pourcentage ?? 0), 2) }}$</td>
+                    <td>{{ $expense->expenseCategory?->description ?? 'Non défini' }}</td>
+                    <td>{{ $expense->commerce?->description ?? 'Non défini' }}</td>
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="6" class="text-center">Aucune dépense trouvée pour cette catégorie.</td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
     </div>
 @endsection
 

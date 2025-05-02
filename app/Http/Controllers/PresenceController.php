@@ -55,7 +55,7 @@ class PresenceController extends Controller
             'child_id' => 'required|exists:children,id',
             'educator_id' => 'required|exists:educators,id',
         ]);
-        var_dump($request->nursery_id);
+
         Presence::create([
             'date' => now(),
             'nursery_id' => $request->nursery_id,
@@ -63,7 +63,7 @@ class PresenceController extends Controller
             'educator_id' => $request->educator_id,
         ]);
 
-        //return redirect()->route('presence.show',['nursery_id' => $request->nursery_id]);
+        return redirect()->route('presence.show', ['nursery_id' => $request->nursery_id]);
     }
 
 

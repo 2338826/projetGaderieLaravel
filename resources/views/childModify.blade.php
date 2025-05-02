@@ -101,5 +101,38 @@
                 </div>
             </div>
         </form>
+        <h3 class="mt-4">Liste des presences</h3>
+        <table class="table table-bordered table-striped">
+            <thead class="table-light">
+                <tr>
+                    <th>Garderie</th>
+                    <th>Date</th>
+                    <th>Nom enfant</th>
+                    <th>Prénom enfant</th>
+                    <th>Date naissance enfant</th>
+                    <th>Nom éducateur</th>
+                    <th>Prénom éducateur</th>
+                    <th>Date naissance éducateur</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($presences as $presence)
+                    <tr>
+                        <td>{{ $presence->nursery?->name ?? 'Non défini' }}</td>
+                        <td>{{ $presence->date }}</td>
+                        <td>{{ $presence->child?->name ?? 'Non défini' }}</td>
+                        <td>{{ $presence->child?->firstName ?? 'Non défini' }}</td>
+                        <td>{{ $presence->child?->birth_date ?? 'Non défini' }}</td>
+                        <td>{{ $presence->educator?->name ?? 'Non défini' }}</td>
+                        <td>{{ $presence->educator?->firstName ?? 'Non défini' }}</td>
+                        <td>{{ $presence->educator?->birth_date ?? 'Non défini' }}</td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="8" class="text-center">Aucune présence trouvée.</td>
+                    </tr>
+                @endforelse
+            </tbody>
+        </table>
     </div>
 @endsection
