@@ -31,5 +31,9 @@
         <li class="nav-item">
             <a class="nav-link {{ request()->is('rapport') ? 'active' : '' }}" href="{{ url('/rapport') }}">Rapport</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link {{ Route::currentRouteName() == 'state.show' ? 'active' : '' }}"
+                href="{{ route('state.show') }}">État</a>
+        </li>
     </ul>
 </nav>

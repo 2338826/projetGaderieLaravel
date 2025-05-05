@@ -15,7 +15,7 @@ class StateController extends Controller
     public function index()
     {
         $states = State::all();
-        return view('state.show', compact('states'));
+        return view('state', compact('states'));
     }
 
     /*
@@ -26,7 +26,7 @@ class StateController extends Controller
     public function add(Request $request)
     {
         $state = new State();
-        $state->name = $request->input('name');
+        $state->description = $request->input('description');
         $state->save();
 
         return redirect()->route('state.show')->with('success', 'State added successfully.');

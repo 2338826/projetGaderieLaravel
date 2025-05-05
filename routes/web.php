@@ -6,6 +6,8 @@ use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\ChildController;
 use App\Http\Controllers\EducatorController;
 use App\Http\Controllers\PresenceController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\StateController;
 use Illuminate\Support\Facades\Route;
 
 /*
