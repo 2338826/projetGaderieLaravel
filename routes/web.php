@@ -67,5 +67,10 @@ Route::delete('/Presence/{id}/delete', [PresenceController::class, 'destroy'])->
 Route::delete('/Presence/{id}/clear', [PresenceController::class, 'clear'])->name('presence.clear');
 Route::get('/Presence', [PresenceController::class, 'index'])->name('presence.show');
 
+Route::get('/Report', [ReportController::class, 'index'])->name('report.show');
+
+Route::post('/State/add', [StateController::class, 'add'])->name('state.add');
+Route::post('/State/{id}/delete', [StateController::class, 'destroy'])->name('state.destroy');
+Route::get('/State', [StateController::class, 'index'])->name('state.show');
 
 
