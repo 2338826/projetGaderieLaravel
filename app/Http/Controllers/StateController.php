@@ -38,7 +38,7 @@ class StateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id)
+    public function destroy($id)
     {
         $state = State::findOrFail($id);
         $state->delete();

@@ -18,14 +18,14 @@ class ReportController extends Controller
         // Récupérer le nursery_id sélectionné ou utiliser le premier par défaut
         $selectedNurseryId = $request->query('nursery_id') ?? ($nurseries->first()->id ?? null);
 
-        // Récupérer tous les éducateurs (sans filtre nursery_id pour l'instant)
-        $presences = Presence::all();
+        // Filtrer les présences par nursery_id si sélectionné
+        $presences = $selectedNurseryId ? Presence::where('nursery_id', $selectedNurseryId)->get() : collect([]);
 
         // Filtrer les dépenses par nursery_id si sélectionné
-        $expenses = $selectedNurseryId ? Expense::where('nursery_id', $selectedNurseryId)->get() : Expense::all();
+        $expenses = $selectedNurseryId ? Expense::where('nursery_id', $selectedNurseryId)->get() : collect([]);
 
-        // Estimer le nombre de présences (placeholder ; ajustez selon vos données)
-        $totalPresences = $presences->count(); // Simplification ; remplacez par une logique réelle
+        // Compter le nombre de présences pour la garderie sélectionnée
+        $totalPresences = $presences->count();
 
         // Revenu : Supposons 48 $ par présence
         $revenuParPresence = 48;

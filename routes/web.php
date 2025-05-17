@@ -72,7 +72,7 @@ Route::get('/Presence', [PresenceController::class, 'index'])->name('presence.sh
 Route::get('/Report', [ReportController::class, 'index'])->name('report.show');
 
 Route::post('/State/add', [StateController::class, 'add'])->name('state.add');
-Route::post('/State/{id}/delete', [StateController::class, 'destroy'])->name('state.destroy');
+Route::delete('/State/{id}/delete', [StateController::class, 'destroy'])->name('state.destroy');
 Route::get('/State', [StateController::class, 'index'])->name('state.show');
 
 

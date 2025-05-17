@@ -3,7 +3,7 @@
 @section('content')
 <div class="mb-4">
     @if ($nurseries->isNotEmpty())
-        <form action="{{ route('expense.show') }}" method="GET">
+        <form action="{{ route('presence.show') }}" method="GET">
             <label for="nursery_id" class="form-label">Sélectionner une garderie :</label>
             <select name="nursery_id" id="nursery_id" class="form-select w-25" onchange="this.form.submit()">
                 @foreach ($nurseries as $nursery)
